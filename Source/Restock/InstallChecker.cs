@@ -46,7 +46,7 @@ namespace Restock
             string observedInstallPath = Path.GetFullPath(assemblyDir.parent.path);
             string expectedInstallPath = Path.GetFullPath(Path.Combine(KSPUtil.ApplicationRootPath, Path.Combine("GameData", "ReStock")));
 
-            if (observedInstallPath != expectedInstallPath)
+            if (!string.Equals(observedInstallPath, expectedInstallPath, StringComparison.OrdinalIgnoreCase))
             {
                 Debug.LogError($"[Restock] Install found at '{observedInstallPath}'");
                 yield return $"Expected Restock to be installed at\n{expectedInstallPath}\nbut actually installed at\n{observedInstallPath}";
